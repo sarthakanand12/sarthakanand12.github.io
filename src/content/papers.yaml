@@ -1,0 +1,1079 @@
+# The reading library — one record per paper, exported from the vault.
+#
+# There is no per-paper page and no prose here: a paper is metadata. Notes about
+# a paper go in a blog post that lists its slug in `papers:`, which renders as a
+# link in both directions (see src/pages/blogs/[slug].astro and PaperPanel).
+#
+# `id` IS the permanent slug. Project and blog backlinks reference it, and the
+# build fails if one drifts out of data/graph.json. Never change an existing id.
+#
+# Grouped by theme, then title, mirroring the vault's folders. Order here is for
+# reading convenience only — allPapers() sorts by title.
+
+# ── Agents & Orchestration ──────────────────────────────────────
+- id: "agentic-harness-engineering"
+  title: "Agentic Harness Engineering"
+  theme: "Agents & Orchestration"
+  subtheme: null
+  tags:
+    - "agent harness design"
+    - "coding agents"
+    - "observability"
+    - "self-evolving agents"
+    - "agent orchestration"
+  url: "https://arxiv.org/abs/2604.25850"
+  status: read
+  confidence: confirmed
+
+- id: "dive-into-claude-code"
+  title: "Dive into Claude Code"
+  theme: "Agents & Orchestration"
+  subtheme: null
+  tags:
+    - "agent harness design"
+    - "coding agents"
+    - "tool use"
+    - "context management"
+    - "agent extensibility (MCP/plugins/skills)"
+    - "sub-agent orchestration"
+  url: "https://arxiv.org/abs/2604.14228"
+  status: read
+  confidence: confirmed
+
+- id: "llms-get-lost-in-multi-turn-conversation"
+  title: "LLMs Get Lost in Multi-Turn Conversation"
+  theme: "Agents & Orchestration"
+  subtheme: null
+  tags:
+    - "multi-turn dialogue"
+    - "LLM evaluation"
+    - "conversational reliability"
+    - "underspecification"
+  url: "https://arxiv.org/abs/2505.06120"
+  status: read
+  confidence: confirmed
+
+- id: "meta-harness-end-to-end-optimization-of-model-harnesses"
+  title: "Meta-Harness: End-to-End Optimization of Model Harnesses"
+  theme: "Agents & Orchestration"
+  subtheme: null
+  tags:
+    - "agent harness design"
+    - "harness optimization"
+    - "coding agents"
+    - "self-evolving agents"
+  url: "https://arxiv.org/abs/2603.28052"
+  status: read
+  confidence: confirmed
+
+- id: "skillopt-executive-strategy-for-self-evolving-agent-skills"
+  title: "SkillOpt: Executive Strategy for Self-Evolving Agent Skills"
+  theme: "Agents & Orchestration"
+  subtheme: null
+  tags:
+    - "agent skills"
+    - "self-evolving agents"
+    - "skill optimization"
+    - "agent harness design"
+  url: "https://arxiv.org/abs/2605.23904"
+  status: read
+  confidence: confirmed
+
+- id: "thread-thinking-deeper-with-recursive-spawning"
+  title: "THREAD: Thinking Deeper with Recursive Spawning"
+  theme: "Agents & Orchestration"
+  subtheme: null
+  tags:
+    - "recursive agents"
+    - "sub-agent orchestration"
+    - "task decomposition"
+    - "agentic question answering"
+  url: "https://arxiv.org/abs/2405.17402"
+  status: read
+  confidence: confirmed
+
+
+# ── Dialogue Systems ────────────────────────────────────────────
+- id: "dfa-rag-conversational-semantic-router-with-definite-finite-automaton"
+  title: "DFA-RAG: Conversational Semantic Router with Definite Finite Automaton"
+  theme: "Dialogue Systems"
+  subtheme: "Dialogue Policy Planning"
+  tags:
+    - "dialogue policy planning"
+    - "retrieval-augmented generation"
+    - "semantic routing"
+    - "finite automaton"
+    - "workflow compliance"
+  url: "https://arxiv.org/abs/2402.04411"
+  status: read
+  confidence: confirmed
+
+- id: "diaggpt-multi-agent-dialogue-system-with-automatic-topic-management"
+  title: "DiagGPT: Multi-Agent Dialogue System with Automatic Topic Management"
+  theme: "Dialogue Systems"
+  subtheme: "Dialogue Policy Planning"
+  tags:
+    - "task-oriented dialogue"
+    - "multi-agent systems"
+    - "dialogue policy planning"
+    - "topic management"
+  url: "https://arxiv.org/abs/2308.08043"
+  status: read
+  confidence: confirmed
+
+- id: "dialogrpt-dialogue-response-ranking-with-human-feedback"
+  title: "DialogRPT: Dialogue Response Ranking with Human Feedback"
+  theme: "Dialogue Systems"
+  subtheme: "Dialogue Evaluation & Structure"
+  tags:
+    - "dialogue evaluation"
+    - "response ranking"
+    - "human feedback data"
+    - "engagement prediction"
+  url: "https://arxiv.org/abs/2009.06978"
+  status: read
+  confidence: confirmed
+
+- id: "gauchobot-building-robust-tod-systems-from-scratch"
+  title: "Gauchobot: Building Robust TOD Systems from Scratch"
+  theme: "Dialogue Systems"
+  subtheme: "Task Oriented Dialogue Systems"
+  tags:
+    - "task-oriented dialogue systems"
+    - "dialogue system architecture"
+    - "automatic data generation"
+    - "Alexa Prize"
+  url: "https://sites.cs.ucsb.edu/~xyan/papers/alexa22-gauchobot.pdf"
+  status: read
+  confidence: confirmed
+
+- id: "gopo-goal-oriented-preference-optimization"
+  title: "GOPO: Goal-Oriented Preference Optimization"
+  theme: "Dialogue Systems"
+  subtheme: "Dialogue Policy Planning"
+  tags:
+    - "preference optimization"
+    - "hierarchical reinforcement learning"
+    - "dialogue policy planning"
+    - "task-oriented dialogue"
+    - "e-commerce customer service"
+  url: "https://arxiv.org/abs/2602.15854"
+  status: read
+  confidence: confirmed
+
+- id: "hiertod-task-oriented-dialogue-driven-by-hierarchical-goals"
+  title: "HierTOD: Task-Oriented Dialogue Driven by Hierarchical Goals"
+  theme: "Dialogue Systems"
+  subtheme: "Task Oriented Dialogue Systems"
+  tags:
+    - "task-oriented dialogue systems"
+    - "hierarchical goals"
+    - "enterprise dialogue systems"
+    - "slot filling"
+    - "dialogue management"
+  url: "https://arxiv.org/abs/2411.07152"
+  status: read
+  confidence: confirmed
+
+- id: "ppdpp-plug-and-play-dialogue-policy-planner"
+  title: "PPDPP: Plug-and-Play Dialogue Policy Planner"
+  theme: "Dialogue Systems"
+  subtheme: "Dialogue Policy Planning"
+  tags:
+    - "dialogue policy planning"
+    - "reinforcement learning"
+    - "proactive dialogue"
+    - "self-play"
+  url: "https://arxiv.org/abs/2311.00262"
+  status: read
+  confidence: confirmed
+
+- id: "revisiting-clustering-for-efficient-unsupervised-dialogue-structure-induction"
+  title: "Revisiting Clustering for Efficient Unsupervised Dialogue Structure Induction"
+  theme: "Dialogue Systems"
+  subtheme: "Dialogue Evaluation & Structure"
+  tags:
+    - "dialogue structure induction"
+    - "unsupervised clustering"
+    - "sentence representation learning"
+    - "dialogue systems"
+  url: null
+  status: read
+  confidence: confirmed
+
+- id: "schema-graph-guided-prompt-for-multi-domain-dialogue-state-tracking"
+  title: "Schema Graph-Guided Prompt for Multi-Domain Dialogue State Tracking"
+  theme: "Dialogue Systems"
+  subtheme: "Task Oriented Dialogue Systems"
+  tags:
+    - "dialogue state tracking"
+    - "graph neural networks"
+    - "prompt-based adaptation"
+    - "multi-domain dialogue"
+  url: "https://arxiv.org/abs/2311.06345"
+  status: read
+  confidence: confirmed
+
+- id: "script-based-dialog-policy-planning-for-an-ai-therapist"
+  title: "Script-Based Dialog Policy Planning for an AI Therapist"
+  theme: "Dialogue Systems"
+  subtheme: "Dialogue Policy Planning"
+  tags:
+    - "dialogue policy planning"
+    - "AI therapist / mental health AI"
+    - "finite-state dialogue control"
+    - "LLM safety in healthcare"
+  url: "https://arxiv.org/abs/2412.15242"
+  status: read
+  confidence: confirmed
+
+
+# ── Drift & Distribution Shift ──────────────────────────────────
+- id: "learning-under-concept-drift-a-review"
+  title: "Learning under Concept Drift: A Review"
+  theme: "Drift & Distribution Shift"
+  subtheme: null
+  tags:
+    - "concept drift"
+    - "distribution shift"
+    - "survey"
+    - "streaming data"
+    - "drift detection and adaptation"
+  url: "https://arxiv.org/abs/2004.05785"
+  status: read
+  confidence: confirmed
+
+
+# ── Evaluation & Safety ─────────────────────────────────────────
+- id: "ares-automated-evaluation-framework-for-rag-systems"
+  title: "ARES: Automated Evaluation Framework for RAG Systems"
+  theme: "Evaluation & Safety"
+  subtheme: "Evaluation"
+  tags:
+    - "RAG evaluation"
+    - "automated evaluation"
+    - "LLM-as-judge"
+    - "retrieval-augmented generation"
+  url: "https://arxiv.org/abs/2311.09476"
+  status: read
+  confidence: confirmed
+
+- id: "deepcontext-stateful-real-time-detection-of-multi-turn-adversarial-intent-drift-in-llms"
+  title: "DeepContext: Stateful Real-Time Detection of Multi-Turn Adversarial Intent Drift in LLMs"
+  theme: "Evaluation & Safety"
+  subtheme: "Safety & Guardrails"
+  tags:
+    - "adversarial intent detection"
+    - "multi-turn jailbreak detection"
+    - "LLM safety guardrails"
+    - "stateful monitoring (RNN)"
+  url: "https://arxiv.org/abs/2602.16935"
+  status: noted
+  confidence: confirmed
+
+- id: "dolphin-unconfirmed"
+  title: "Dolphin"
+  theme: "Evaluation & Safety"
+  subtheme: "Evaluation"
+  tags:
+    - "evaluation / benchmark"
+  url: "https://arxiv.org/abs/2505.14059"
+  status: skimmed
+  confidence: unconfirmed
+
+- id: "javelinguard-low-cost-transformer-architectures-for-llm-security"
+  title: "JavelinGuard: Low-Cost Transformer Architectures for LLM Security"
+  theme: "Evaluation & Safety"
+  subtheme: "Safety & Guardrails"
+  tags:
+    - "guardrail models"
+    - "jailbreak/prompt-injection detection"
+    - "transformer classifiers"
+    - "LLM security"
+  url: "https://arxiv.org/abs/2506.07330"
+  status: read
+  confidence: confirmed
+
+- id: "judging-llm-as-a-judge-with-mt-bench-and-chatbot-arena"
+  title: "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena"
+  theme: "Evaluation & Safety"
+  subtheme: "Evaluation"
+  tags:
+    - "LLM-as-judge"
+    - "evaluation benchmarks"
+    - "MT-Bench"
+    - "Chatbot Arena"
+    - "evaluation bias"
+  url: "https://arxiv.org/abs/2306.05685"
+  status: read
+  confidence: confirmed
+
+- id: "race-reasoning-augmented-conversation-for-multi-turn-jailbreak-attacks"
+  title: "RACE: Reasoning-Augmented Conversation for Multi-Turn Jailbreak Attacks"
+  theme: "Evaluation & Safety"
+  subtheme: "Safety & Guardrails"
+  tags:
+    - "multi-turn jailbreak attacks"
+    - "LLM safety"
+    - "reasoning-driven attacks"
+    - "red-teaming"
+    - "attack state machine"
+  url: "https://arxiv.org/abs/2502.11054"
+  status: read
+  confidence: confirmed
+
+
+# ── Fine-tuning & Alignment ─────────────────────────────────────
+- id: "a-practitioner-s-guide-to-multi-turn-agentic-reinforcement-learning"
+  title: "A Practitioner's Guide to Multi-Turn Agentic Reinforcement Learning"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "RLHF & RL"
+  tags:
+    - "multi-turn agentic RL"
+    - "reward design"
+    - "RL training recipe"
+    - "LLM agents"
+    - "PPO/GRPO/RLOO"
+  url: "https://arxiv.org/abs/2510.01132"
+  status: read
+  confidence: confirmed
+
+- id: "a-vision-researcher-s-guide-to-rl-ppo-grpo"
+  title: "A Vision Researcher's Guide to RL: PPO & GRPO"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "RLHF & RL"
+  tags:
+    - "RLHF"
+    - "PPO"
+    - "GRPO"
+    - "introductory explainer"
+  url: "https://yugeten.github.io/posts/2025/01/ppogrpo/"
+  status: read
+  confidence: confirmed
+
+- id: "deepseekmath-pushing-the-limits-of-mathematical-reasoning"
+  title: "DeepSeekMath: Pushing the Limits of Mathematical Reasoning"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "RLHF & RL"
+  tags:
+    - "mathematical reasoning"
+    - "GRPO"
+    - "reinforcement learning"
+    - "pretraining corpus curation"
+  url: "https://arxiv.org/abs/2402.03300"
+  status: read
+  confidence: confirmed
+
+- id: "dlp-lora-efficient-task-specific-lora-fusion"
+  title: "DLP-LoRA: Efficient Task-Specific LoRA Fusion"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "PEFT"
+  tags:
+    - "parameter-efficient fine-tuning"
+    - "LoRA"
+    - "dynamic LoRA fusion"
+    - "multi-task adaptation"
+  url: "https://arxiv.org/abs/2410.01497"
+  status: read
+  confidence: confirmed
+
+- id: "dopd-dual-on-policy-distillation"
+  title: "DOPD: Dual On-Policy Distillation"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "Distillation & SFT"
+  tags:
+    - "on-policy distillation"
+    - "knowledge distillation"
+    - "privileged information"
+    - "teacher-student training"
+    - "LLM/VLM"
+  url: "https://arxiv.org/abs/2606.30626"
+  status: read
+  confidence: confirmed
+
+- id: "dpo-direct-preference-optimization"
+  title: "DPO: Direct Preference Optimization"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "RLHF & RL"
+  tags:
+    - "direct preference optimization"
+    - "RLHF alternative"
+    - "reward modeling"
+    - "preference alignment"
+  url: "https://arxiv.org/abs/2305.18290"
+  status: read
+  confidence: confirmed
+
+- id: "neural-text-degeneration-with-unlikelihood-training"
+  title: "Neural Text Degeneration with Unlikelihood Training"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "Distillation & SFT"
+  tags:
+    - "text degeneration"
+    - "unlikelihood training"
+    - "decoding methods"
+    - "language model training objectives"
+  url: "https://arxiv.org/abs/1908.04319"
+  status: read
+  confidence: confirmed
+
+- id: "prefix-tuning-optimizing-continuous-prompts-for-generation"
+  title: "Prefix-Tuning: Optimizing Continuous Prompts for Generation"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "PEFT"
+  tags:
+    - "parameter-efficient fine-tuning"
+    - "prefix-tuning"
+    - "prompt optimization"
+    - "continuous prompts"
+  url: "https://arxiv.org/abs/2101.00190"
+  status: read
+  confidence: confirmed
+
+- id: "privileged-information-distillation-for-language-models"
+  title: "Privileged Information Distillation for Language Models"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "Distillation & SFT"
+  tags:
+    - "privileged information distillation"
+    - "agentic reinforcement learning"
+    - "teacher-student training"
+    - "chain-of-thought supervision"
+  url: "https://arxiv.org/abs/2602.04942"
+  status: read
+  confidence: confirmed
+
+- id: "t-few-few-shot-peft-is-better-and-cheaper-than-in-context-learning"
+  title: "T-Few: Few-Shot PEFT is Better and Cheaper than In-Context Learning"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "PEFT"
+  tags:
+    - "parameter-efficient fine-tuning"
+    - "few-shot learning"
+    - "in-context learning comparison"
+    - "(IA)^3"
+  url: "https://arxiv.org/abs/2205.05638"
+  status: read
+  confidence: confirmed
+
+- id: "tessy-teacher-student-cooperation-framework-for-sft-data"
+  title: "TESSY: Teacher-Student Cooperation Framework for SFT Data"
+  theme: "Fine-tuning & Alignment"
+  subtheme: "Distillation & SFT"
+  tags:
+    - "supervised fine-tuning"
+    - "teacher-student distillation"
+    - "reasoning models"
+    - "synthetic data generation"
+  url: "https://arxiv.org/abs/2604.14164"
+  status: read
+  confidence: confirmed
+
+
+# ── Inference Optimization ──────────────────────────────────────
+- id: "arctic-inference-with-shift-parallelism"
+  title: "Arctic Inference with Shift Parallelism"
+  theme: "Inference Optimization"
+  subtheme: "KV Cache & Prefill"
+  tags:
+    - "inference serving systems"
+    - "dynamic parallelism"
+    - "speculative decoding"
+    - "KV cache / compute reduction"
+    - "enterprise inference"
+  url: "https://arxiv.org/abs/2507.11830"
+  status: read
+  confidence: confirmed
+
+- id: "eagle-2-faster-inference-with-dynamic-draft-trees"
+  title: "EAGLE-2: Faster Inference with Dynamic Draft Trees"
+  theme: "Inference Optimization"
+  subtheme: "Speculative Decoding"
+  tags:
+    - "speculative decoding"
+    - "dynamic draft tree"
+    - "inference acceleration"
+  url: "https://arxiv.org/abs/2406.16858"
+  status: read
+  confidence: confirmed
+
+- id: "eagle-3-scaling-up-inference-acceleration-via-training-time-test"
+  title: "EAGLE-3: Scaling Up Inference Acceleration via Training-Time Test"
+  theme: "Inference Optimization"
+  subtheme: "Speculative Decoding"
+  tags:
+    - "speculative decoding"
+    - "training-time test"
+    - "multi-layer feature fusion"
+    - "inference acceleration"
+  url: "https://arxiv.org/abs/2503.01840"
+  status: read
+  confidence: confirmed
+
+- id: "eagle-speculative-sampling-requires-rethinking-feature-uncertainty"
+  title: "EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty"
+  theme: "Inference Optimization"
+  subtheme: "Speculative Decoding"
+  tags:
+    - "speculative decoding"
+    - "feature uncertainty"
+    - "draft model design"
+    - "inference acceleration"
+  url: "https://arxiv.org/abs/2401.15077"
+  status: read
+  confidence: confirmed
+
+- id: "medusa-simple-llm-inference-acceleration-with-multiple-decoding-heads"
+  title: "Medusa: Simple LLM Inference Acceleration with Multiple Decoding Heads"
+  theme: "Inference Optimization"
+  subtheme: "Speculative Decoding"
+  tags:
+    - "speculative decoding"
+    - "multiple decoding heads"
+    - "tree attention"
+    - "inference acceleration"
+  url: "https://arxiv.org/abs/2401.10774"
+  status: read
+  confidence: confirmed
+
+- id: "sarathi-efficient-llm-inference-via-chunked-prefills"
+  title: "Sarathi: Efficient LLM Inference via Chunked Prefills"
+  theme: "Inference Optimization"
+  subtheme: "KV Cache & Prefill"
+  tags:
+    - "chunked prefill"
+    - "prefill-decode scheduling"
+    - "inference throughput"
+    - "pipeline parallelism"
+  url: "https://arxiv.org/abs/2308.16369"
+  status: read
+  confidence: confirmed
+
+- id: "suffixdecoding-extreme-speculative-decoding-for-agentic-applications"
+  title: "SuffixDecoding: Extreme Speculative Decoding for Agentic Applications"
+  theme: "Inference Optimization"
+  subtheme: "Speculative Decoding"
+  tags:
+    - "speculative decoding"
+    - "suffix trees"
+    - "agentic workloads"
+    - "inference acceleration"
+  url: "https://arxiv.org/abs/2411.04975"
+  status: read
+  confidence: confirmed
+
+- id: "when-attention-sink-emerges-in-language-models"
+  title: "When Attention Sink Emerges in Language Models"
+  theme: "Inference Optimization"
+  subtheme: "KV Cache & Prefill"
+  tags:
+    - "attention sink"
+    - "KV cache optimization"
+    - "LLM pretraining dynamics"
+    - "softmax attention analysis"
+  url: "https://arxiv.org/abs/2410.10781"
+  status: read
+  confidence: confirmed
+
+
+# ── LLM Architecture & Internals ────────────────────────────────
+- id: "elt-elastic-looped-transformers-for-visual-generation"
+  title: "ELT: Elastic Looped Transformers for Visual Generation"
+  theme: "LLM Architecture & Internals"
+  subtheme: "Attention Mechanisms"
+  tags:
+    - "looped/recurrent transformers"
+    - "visual generation"
+    - "parameter efficiency"
+    - "self-distillation"
+    - "diffusion models"
+  url: "https://arxiv.org/abs/2604.09168"
+  status: read
+  confidence: confirmed
+
+- id: "massive-activations-in-large-language-models"
+  title: "Massive Activations in Large Language Models"
+  theme: "LLM Architecture & Internals"
+  subtheme: "Model Internals"
+  tags:
+    - "massive activations"
+    - "model internals"
+    - "attention sink (related)"
+    - "interpretability"
+  url: "https://arxiv.org/abs/2402.17762"
+  status: read
+  confidence: confirmed
+
+- id: "multiturn-dialogue-generation-via-sentence-and-discourse-level-context"
+  title: "Multiturn Dialogue Generation via Sentence- and Discourse-Level Context"
+  theme: "LLM Architecture & Internals"
+  subtheme: "Attention Mechanisms"
+  tags:
+    - "multi-turn dialogue generation"
+    - "hierarchical context modeling"
+    - "discourse-level modeling"
+    - "sentence order prediction"
+  url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9701771/"
+  status: read
+  confidence: confirmed
+
+- id: "speech-and-language-processing-bert-chapter-jurafsky-martin"
+  title: "Speech and Language Processing — BERT chapter (Jurafsky & Martin)"
+  theme: "LLM Architecture & Internals"
+  subtheme: "Model Internals"
+  tags:
+    - "BERT"
+    - "masked language modeling"
+    - "transfer learning"
+    - "contextual embeddings"
+    - "transformer fundamentals"
+  url: "https://web.stanford.edu/~jurafsky/slp3/11.pdf"
+  status: read
+  confidence: confirmed
+
+
+# ── NLP Applications ────────────────────────────────────────────
+- id: "a-comparison-of-different-machine-transliteration-models"
+  title: "A Comparison of Different Machine Transliteration Models"
+  theme: "NLP Applications"
+  subtheme: "Transliteration & Multilingual"
+  tags:
+    - "transliteration"
+    - "survey"
+    - "machine transliteration models"
+    - "phonetic conversion"
+  url: "https://arxiv.org/abs/1110.1391"
+  status: read
+  confidence: confirmed
+
+- id: "does-transliteration-help-multilingual-language-modeling"
+  title: "Does Transliteration Help Multilingual Language Modeling?"
+  theme: "NLP Applications"
+  subtheme: "Transliteration & Multilingual"
+  tags:
+    - "transliteration"
+    - "multilingual language models"
+    - "cross-lingual representation"
+    - "Indic languages"
+    - "script normalization"
+  url: "https://arxiv.org/abs/2201.12501"
+  status: noted
+  confidence: confirmed
+
+- id: "gliner-generalist-model-for-named-entity-recognition"
+  title: "GLiNER: Generalist Model for Named Entity Recognition"
+  theme: "NLP Applications"
+  subtheme: "NER & Classification"
+  tags:
+    - "named entity recognition"
+    - "zero-shot NER"
+    - "bidirectional transformer"
+    - "compact models"
+  url: "https://arxiv.org/abs/2311.08526"
+  status: read
+  confidence: confirmed
+
+- id: "lisa-llm-guided-semantic-aware-clustering-for-topic-modeling"
+  title: "LiSA: LLM-Guided Semantic-Aware Clustering for Topic Modeling"
+  theme: "NLP Applications"
+  subtheme: "Topic Modeling"
+  tags:
+    - "topic modeling"
+    - "LLM-guided clustering"
+    - "semantic space alignment"
+  url: "https://aclanthology.org/2025.acl-long.902.pdf"
+  status: read
+  confidence: confirmed
+
+- id: "llmlingua-compressing-prompts-for-accelerated-inference"
+  title: "LLMLingua: Compressing Prompts for Accelerated Inference"
+  theme: "NLP Applications"
+  subtheme: "NER & Classification"
+  tags:
+    - "prompt compression"
+    - "inference acceleration"
+    - "token pruning"
+    - "context compression"
+  url: "https://arxiv.org/abs/2310.05736"
+  status: read
+  confidence: confirmed
+
+- id: "setfit-efficient-few-shot-learning-without-prompts"
+  title: "SetFit: Efficient Few-Shot Learning Without Prompts"
+  theme: "NLP Applications"
+  subtheme: "NER & Classification"
+  tags:
+    - "few-shot learning"
+    - "sentence transformers"
+    - "contrastive fine-tuning"
+    - "text classification"
+  url: "https://arxiv.org/abs/2209.11055"
+  status: read
+  confidence: confirmed
+
+
+# ── RAG & Retrieval ─────────────────────────────────────────────
+- id: "contriever-unsupervised-dense-information-retrieval-with-contrastive-learning"
+  title: "Contriever: Unsupervised Dense Information Retrieval with Contrastive Learning"
+  theme: "RAG & Retrieval"
+  subtheme: "Retrieval Methods"
+  tags:
+    - "unsupervised dense retrieval"
+    - "contrastive learning"
+    - "cross-lingual retrieval"
+  url: "https://arxiv.org/abs/2112.09118"
+  status: read
+  confidence: confirmed
+
+- id: "flashrag-a-modular-toolkit-for-rag-research"
+  title: "FlashRAG: A Modular Toolkit for RAG Research"
+  theme: "RAG & Retrieval"
+  subtheme: "RAG Pipelines"
+  tags:
+    - "RAG toolkit"
+    - "benchmarking framework"
+    - "modular RAG"
+    - "reproducibility"
+  url: "https://arxiv.org/abs/2405.13576"
+  status: read
+  confidence: confirmed
+
+- id: "fusion-functions-for-hybrid-retrieval-unconfirmed"
+  title: "Fusion functions for hybrid retrieval"
+  theme: "RAG & Retrieval"
+  subtheme: "Hybrid Search & Reranking"
+  tags:
+    - "hybrid retrieval"
+    - "score fusion"
+  url: "https://arxiv.org/abs/2210.11934"
+  status: skimmed
+  confidence: unconfirmed
+
+- id: "hyde-precise-zero-shot-dense-retrieval-without-relevance-labels"
+  title: "HyDE: Precise Zero-Shot Dense Retrieval without Relevance Labels"
+  theme: "RAG & Retrieval"
+  subtheme: "Retrieval Methods"
+  tags:
+    - "zero-shot dense retrieval"
+    - "hypothetical document embeddings"
+    - "unsupervised retrieval"
+  url: "https://arxiv.org/abs/2212.10496"
+  status: read
+  confidence: confirmed
+
+- id: "longrefiner-hierarchical-document-refinement-for-long-context-rag"
+  title: "LongRefiner: Hierarchical Document Refinement for Long-Context RAG"
+  theme: "RAG & Retrieval"
+  subtheme: "RAG Pipelines"
+  tags:
+    - "long-context RAG"
+    - "document refinement"
+    - "hierarchical document structuring"
+    - "context compression"
+  url: "https://arxiv.org/abs/2505.10413"
+  status: read
+  confidence: confirmed
+
+- id: "m3-embedding-bge-m3-multi-linguality-multi-functionality-multi-granularity"
+  title: "M3-Embedding (BGE-M3): Multi-Linguality, Multi-Functionality, Multi-Granularity"
+  theme: "RAG & Retrieval"
+  subtheme: "Hybrid Search & Reranking"
+  tags:
+    - "multilingual embeddings"
+    - "hybrid retrieval (dense+sparse+multi-vector)"
+    - "self-knowledge distillation"
+    - "embedding models"
+  url: "https://arxiv.org/abs/2402.03216"
+  status: read
+  confidence: confirmed
+
+- id: "making-retrieval-augmented-language-models-robust-to-irrelevant-context"
+  title: "Making Retrieval-Augmented Language Models Robust to Irrelevant Context"
+  theme: "RAG & Retrieval"
+  subtheme: "Retrieval Methods"
+  tags:
+    - "retrieval-augmented LMs"
+    - "robustness to irrelevant context"
+    - "multi-hop QA"
+    - "NLI-based filtering"
+  url: "https://arxiv.org/abs/2310.01558"
+  status: read
+  confidence: confirmed
+
+- id: "minimizing-flops-to-learn-efficient-sparse-representations"
+  title: "Minimizing FLOPs to Learn Efficient Sparse Representations"
+  theme: "RAG & Retrieval"
+  subtheme: "Hybrid Search & Reranking"
+  tags:
+    - "sparse representation learning"
+    - "efficient retrieval"
+    - "FLOP-regularized embeddings"
+    - "embedding compression"
+  url: "https://arxiv.org/abs/2004.05665"
+  status: noted
+  confidence: confirmed
+
+- id: "rearank-reasoning-re-ranking-agent-via-reinforcement-learning"
+  title: "ReaRank: Reasoning Re-ranking Agent via Reinforcement Learning"
+  theme: "RAG & Retrieval"
+  subtheme: "Hybrid Search & Reranking"
+  tags:
+    - "LLM reranking"
+    - "reinforcement learning"
+    - "listwise reranking"
+    - "reasoning-based reranking"
+  url: "https://arxiv.org/abs/2505.20046"
+  status: read
+  confidence: confirmed
+
+- id: "refrag-rethinking-rag-based-decoding"
+  title: "REFRAG: Rethinking RAG-Based Decoding"
+  theme: "RAG & Retrieval"
+  subtheme: "RAG Pipelines"
+  tags:
+    - "RAG decoding efficiency"
+    - "KV cache compression"
+    - "attention sparsity"
+    - "long-context RAG"
+  url: "https://arxiv.org/abs/2509.01092"
+  status: read
+  confidence: confirmed
+
+- id: "selective-context-compressing-context-to-enhance-inference-efficiency"
+  title: "Selective Context: Compressing Context to Enhance Inference Efficiency"
+  theme: "RAG & Retrieval"
+  subtheme: "RAG Pipelines"
+  tags:
+    - "context compression"
+    - "inference efficiency"
+    - "long-context LLMs"
+    - "prompt pruning"
+  url: "https://arxiv.org/abs/2310.06201"
+  status: read
+  confidence: confirmed
+
+- id: "skr-self-knowledge-guided-retrieval-augmentation"
+  title: "SKR: Self-Knowledge Guided Retrieval Augmentation"
+  theme: "RAG & Retrieval"
+  subtheme: "Retrieval Methods"
+  tags:
+    - "adaptive retrieval"
+    - "self-knowledge"
+    - "retrieval augmentation"
+    - "when-to-retrieve"
+  url: "https://arxiv.org/abs/2310.05002"
+  status: read
+  confidence: confirmed
+
+- id: "sparseembed-learning-sparse-lexical-representations-with-contextual-embeddings"
+  title: "SparseEmbed: Learning Sparse Lexical Representations with Contextual Embeddings"
+  theme: "RAG & Retrieval"
+  subtheme: "Hybrid Search & Reranking"
+  tags:
+    - "sparse retrieval"
+    - "contextual embeddings"
+    - "learned sparse representations"
+    - "first-stage retrieval"
+  url: "https://dl.acm.org/doi/10.1145/3539618.3592065"
+  status: noted
+  confidence: confirmed
+
+
+# ── Reasoning ───────────────────────────────────────────────────
+- id: "a-survey-of-frontiers-in-llm-reasoning"
+  title: "A Survey of Frontiers in LLM Reasoning"
+  theme: "Reasoning"
+  subtheme: "Chain of Thought"
+  tags:
+    - "LLM reasoning survey"
+    - "inference scaling"
+    - "agentic systems"
+    - "learning to reason"
+  url: "https://arxiv.org/abs/2504.09037"
+  status: read
+  confidence: confirmed
+
+- id: "chain-of-thought-prompting-elicits-reasoning-in-llms"
+  title: "Chain-of-Thought Prompting Elicits Reasoning in LLMs"
+  theme: "Reasoning"
+  subtheme: "Chain of Thought"
+  tags:
+    - "chain-of-thought prompting"
+    - "reasoning"
+    - "few-shot prompting"
+    - "arithmetic/commonsense reasoning"
+  url: "https://arxiv.org/abs/2201.11903"
+  status: read
+  confidence: confirmed
+
+- id: "dynasor-cot-reasoning-without-self-doubt-via-certainty-probing"
+  title: "Dynasor-CoT: Reasoning Without Self-Doubt via Certainty Probing"
+  theme: "Reasoning"
+  subtheme: "Chain of Thought"
+  tags:
+    - "chain-of-thought efficiency"
+    - "token reduction"
+    - "certainty probing"
+    - "reasoning termination"
+  url: "https://openreview.net/pdf?id=wpK4IMJfdX"
+  status: read
+  confidence: confirmed
+
+- id: "hierarchical-reasoning-model-hrm"
+  title: "Hierarchical Reasoning Model (HRM)"
+  theme: "Reasoning"
+  subtheme: "Hierarchical & Recursive"
+  tags:
+    - "hierarchical reasoning"
+    - "recurrent reasoning architecture"
+    - "ARC-AGI"
+    - "reasoning models"
+  url: "https://arxiv.org/abs/2506.21734"
+  status: read
+  confidence: confirmed
+
+- id: "recursive-language-models-rlm"
+  title: "Recursive Language Models (RLM)"
+  theme: "Reasoning"
+  subtheme: "Hierarchical & Recursive"
+  tags:
+    - "recursive language models"
+    - "long-context processing"
+    - "inference-time scaling"
+    - "external memory/environment"
+  url: "https://arxiv.org/abs/2512.24601"
+  status: read
+  confidence: confirmed
+
+
+# ── Representation Learning & Embeddings ────────────────────────
+- id: "pooling-and-semantic-shift-challenges-in-long-text-embedding-and-retrieval"
+  title: "Pooling and Semantic Shift: Challenges in Long Text Embedding and Retrieval"
+  theme: "Representation Learning & Embeddings"
+  subtheme: "Embedding Geometry"
+  tags:
+    - "embedding geometry"
+    - "anisotropy"
+    - "pooling operations"
+    - "long-text embeddings"
+    - "retrieval degradation"
+  url: "https://arxiv.org/abs/2603.21437"
+  status: read
+  confidence: confirmed
+
+- id: "supcl-seq-supervised-contrastive-learning-for-sequence-representations"
+  title: "SupCL-Seq: Supervised Contrastive Learning for Sequence Representations"
+  theme: "Representation Learning & Embeddings"
+  subtheme: "Contrastive Learning"
+  tags:
+    - "contrastive learning"
+    - "sequence representation learning"
+    - "NLP classification"
+    - "dropout-based augmentation"
+  url: "https://arxiv.org/abs/2109.07424"
+  status: read
+  confidence: confirmed
+
+- id: "supervised-contrastive-learning-supcon"
+  title: "Supervised Contrastive Learning (SupCon)"
+  theme: "Representation Learning & Embeddings"
+  subtheme: "Contrastive Learning"
+  tags:
+    - "contrastive learning"
+    - "supervised representation learning"
+    - "image classification"
+    - "loss function design"
+  url: "https://arxiv.org/abs/2004.11362"
+  status: read
+  confidence: confirmed
+
+
+# ── Text2SQL & Tabular Data ─────────────────────────────────────
+- id: "beyond-extraction-contextualising-tabular-data-for-summarisation"
+  title: "Beyond Extraction: Contextualising Tabular Data for Summarisation"
+  theme: "Text2SQL & Tabular Data"
+  subtheme: "Tabular Reasoning"
+  tags:
+    - "tabular data extraction"
+    - "RAG for tables"
+    - "table summarization"
+    - "context enrichment"
+  url: "https://arxiv.org/abs/2401.02333"
+  status: read
+  confidence: confirmed
+
+- id: "blendsql-a-scalable-dialect-for-unifying-hybrid-question-answering"
+  title: "BlendSQL: A Scalable Dialect for Unifying Hybrid Question Answering"
+  theme: "Text2SQL & Tabular Data"
+  subtheme: "Tabular Reasoning"
+  tags:
+    - "text-to-SQL"
+    - "hybrid question answering"
+    - "relational algebra"
+    - "tabular + unstructured reasoning"
+  url: "https://arxiv.org/abs/2402.17882"
+  status: read
+  confidence: confirmed
+
+- id: "dcg-sql-enhancing-in-context-learning-with-deep-contextual-schema-link-graph"
+  title: "DCG-SQL: Enhancing In-Context Learning with Deep Contextual Schema Link Graph"
+  theme: "Text2SQL & Tabular Data"
+  subtheme: "Text2SQL"
+  tags:
+    - "text-to-SQL"
+    - "schema linking"
+    - "graph-based retrieval"
+    - "in-context learning"
+  url: "https://arxiv.org/abs/2505.19956"
+  status: read
+  confidence: confirmed
+
+- id: "h-star-llm-driven-hybrid-sql-text-adaptive-reasoning-on-tables"
+  title: "H-STAR: LLM-Driven Hybrid SQL-Text Adaptive Reasoning on Tables"
+  theme: "Text2SQL & Tabular Data"
+  subtheme: "Tabular Reasoning"
+  tags:
+    - "tabular reasoning"
+    - "hybrid SQL-text reasoning"
+    - "table question answering"
+    - "symbolic + semantic reasoning"
+  url: "https://arxiv.org/abs/2407.05952"
+  status: noted
+  confidence: confirmed
+
+- id: "next-generation-database-interfaces-a-survey-of-llm-based-text-to-sql"
+  title: "Next-Generation Database Interfaces: A Survey of LLM-based Text-to-SQL"
+  theme: "Text2SQL & Tabular Data"
+  subtheme: "Text2SQL"
+  tags:
+    - "text-to-SQL survey"
+    - "database interfaces"
+    - "LLM-based SQL generation"
+  url: "https://arxiv.org/abs/2406.08426"
+  status: read
+  confidence: confirmed
+
+- id: "sql-palm-improved-llm-adaptation-for-text-to-sql"
+  title: "SQL-PaLM: Improved LLM Adaptation for Text-to-SQL"
+  theme: "Text2SQL & Tabular Data"
+  subtheme: "Text2SQL"
+  tags:
+    - "text-to-SQL"
+    - "instruction fine-tuning"
+    - "few-shot prompting"
+    - "PaLM"
+  url: "https://arxiv.org/abs/2306.00739"
+  status: read
+  confidence: confirmed
+
+- id: "weaver-interweaving-sql-and-llm-for-table-reasoning"
+  title: "Weaver: Interweaving SQL and LLM for Table Reasoning"
+  theme: "Text2SQL & Tabular Data"
+  subtheme: "Tabular Reasoning"
+  tags:
+    - "table question answering"
+    - "SQL + LLM hybrid reasoning"
+    - "tabular data pipelines"
+  url: "https://arxiv.org/abs/2505.18961"
+  status: read
+  confidence: confirmed

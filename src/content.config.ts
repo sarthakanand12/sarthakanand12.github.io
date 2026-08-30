@@ -1,41 +1,48 @@
 import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 
 /**
  * These schemas are the contract. A content file that violates one SHOULD fail
  * the build — do not add .optional()/.catch() to make a broken file pass; fix
- * the file. (CLAUDE.md)
+ * the file.
  *
- * Note what is absent: `concepts`. Concepts are derived from concept_map.yaml
- * at build time via src/lib/data.ts and are never authored on a paper.
+ * Note what is absent: `concepts`. Concepts are joined in from data/graph.json
+ * via src/lib/data.ts and are never authored on a paper.
  */
 
+/**
+ * One YAML file, not a directory of empty-bodied markdown: same reasoning as
+ * `courses` below. A paper is metadata — there is no per-paper route and
+ * nothing calls render() on one, so a body would have nowhere to display.
+ *
+ * Notes about a paper live in a blog post that names its slug in `papers:`;
+ * that renders as a link in both directions, so prose has a home without a
+ * paper needing one.
+ *
+ * `id` is the permanent slug — project and blog backlinks reference it, and
+ * allPapers() throws if one drifts out of data/graph.json. Never change one.
+ */
 const papers = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/papers' }),
+  loader: file('./src/content/papers.yaml'),
   schema: z.object({
+    id: z.string().min(1),
     title: z.string().min(1),
 
-    // Theme/subtheme mirror papers_index.json's `path`; they are not a second
-    // source of truth. Kept in frontmatter so the UI needs no path parsing.
+    // Theme/subtheme mirror the vault's folder structure, exported alongside
+    // the paper, so the UI needs no path parsing.
     theme: z.string().min(1),
     subtheme: z.string().nullable().default(null),
 
-    // Raw tags, verbatim from papers_index.json — including odd ones like
-    // `(IA)^3`. Never normalised, retitled or deduplicated.
+    // Raw tags, verbatim from the vault — including odd ones like `(IA)^3`.
+    // Never normalised, retitled or deduplicated. Search facets only; the
+    // graph is built from concepts, not these.
     tags: z.array(z.string()).default([]),
 
-    // The one hand-added link. `venue`/`year` are display-only and stay
-    // nullable until a resolver script fills them (SPEC §9).
+    // The one hand-added link.
     url: z.string().url().nullable().default(null),
-    venue: z.string().nullable().default(null),
-    year: z.number().int().min(1990).max(2100).nullable().default(null),
 
     status: z.enum(['noted', 'read', 'skimmed']),
     confidence: z.enum(['confirmed', 'unconfirmed']),
-
-    // The `note` field carried over from papers_index.json, shown when the
-    // .md body is still empty.
-    indexNote: z.string().nullable().default(null),
 
     draft: z.boolean().default(false),
   }),
@@ -94,28 +101,50 @@ const blogs = defineCollection({
  */
 const CATEGORIES = ['Civil', 'CSE'] as const;
 
+/**
+ * One YAML file, not a directory of empty-bodied markdown: a course is a name,
+ * a grade and a category, with no prose to render and no detail page.
+ *
+ * Render order is the order entries appear in courses.yaml. `file()` preserves
+ * it and allCourses() adds no sort, so the file reads as the page reads.
+ *
+ * Each entry needs an `id` — the array form of `file()` skips (with only a log
+ * line) any item lacking one, so a missing id drops a course silently. It is
+ * the entry key, not schema data, so it is validated here rather than declared.
+ */
 const courses = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/courses' }),
+  loader: file('./src/content/courses.yaml'),
   schema: z.object({
+    id: z.string().min(1),
     title: z.string().min(1),
-    issuer: z.string().min(1),
-    year: z.number().int().min(1990).max(2100),
     category: z.enum(CATEGORIES),
-    url: z.string().url().nullable().default(null),
-    order: z.number().int().default(100),
+
+    // Letter grade, rendered inline after the course name. Nullable because a
+    // MOOC or audited course legitimately has none — absent means "not graded",
+    // never "grade withheld", so it renders as nothing rather than a dash.
+    grade: z.string().min(1).nullable().default(null),
+
     draft: z.boolean().default(false),
   }),
 });
 
+/**
+ * One YAML file, not a directory of markdown: same reasoning as `courses`
+ * above — a certificate is title/issuer/credentialId, no prose, no detail page.
+ *
+ * Render order is the order entries appear in certificates.yaml; `file()`
+ * preserves it and allCertificates() adds no sort.
+ *
+ * Each entry needs an `id` — the array form of `file()` skips (with only a log
+ * line) any item lacking one, so a missing id drops a certificate silently.
+ */
 const certificates = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/certificates' }),
+  loader: file('./src/content/certificates.yaml'),
   schema: z.object({
+    id: z.string().min(1),
     title: z.string().min(1),
     issuer: z.string().min(1),
-    year: z.number().int().min(1990).max(2100),
     credentialId: z.string().nullable().default(null),
-    url: z.string().url().nullable().default(null),
-    order: z.number().int().default(100),
     draft: z.boolean().default(false),
   }),
 });

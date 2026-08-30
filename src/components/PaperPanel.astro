@@ -127,11 +127,9 @@ import Icon from './Icon.astro';
 
       el('panel-status').textContent = d.status;
       el('panel-title').textContent = d.title;
-      el('panel-meta').textContent = [d.crumb, d.year, d.venue]
-        .filter(Boolean)
-        .join(' · ');
+      el('panel-meta').textContent = d.crumb;
 
-      // Links row: external link, plus the re-tagging flag when it applies.
+      // Links row: the external link, when there is one.
       const links = el('panel-links');
       links.textContent = '';
       if (d.url) {
@@ -142,12 +140,6 @@ import Icon from './Icon.astro';
         a.className = 'chip';
         a.textContent = d.arxivId ? 'arXiv:' + d.arxivId : 'link';
         links.appendChild(a);
-      }
-      if (d.unconfirmed) {
-        const f = document.createElement('span');
-        f.className = 'chip chip-flag';
-        f.textContent = 'needs re-tagging';
-        links.appendChild(f);
       }
 
       const tags = el('panel-tags');

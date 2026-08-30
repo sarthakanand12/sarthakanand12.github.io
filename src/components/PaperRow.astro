@@ -26,11 +26,8 @@ const panelPayload = JSON.stringify({
   title: data.title,
   status: data.status,
   crumb,
-  year: data.year,
-  venue: data.venue,
   url: data.url,
   arxivId,
-  unconfirmed: data.confidence === 'unconfirmed',
   tags: data.tags,
   concepts: paper.concepts.map((c) => ({ id: c, label: conceptLabel(c) })),
   related: related.map((r) => ({
@@ -51,10 +48,8 @@ const panelPayload = JSON.stringify({
   ]}
   data-theme={data.theme}
   data-status={data.status}
-  data-confidence={data.confidence}
   data-title={data.title.toLowerCase()}
   data-tags={data.tags.join(' ').toLowerCase()}
-  data-note={(data.indexNote ?? '').toLowerCase()}
   data-concepts={paper.concepts.join(' ')}
   data-slug={paper.slug}
   data-panel={panelPayload}
@@ -69,34 +64,11 @@ const panelPayload = JSON.stringify({
         <span class="inline-flex items-center gap-1">
           <Icon name="theme" size={11} />{crumb}
         </span>
-        {
-          data.year && (
-            <>
-              <span class="text-paper-400">·</span>
-              <span class="tabular">{data.year}</span>
-            </>
-          )
-        }
-        {
-          data.venue && (
-            <>
-              <span class="text-paper-400">·</span>
-              <span>{data.venue}</span>
-            </>
-          )
-        }
       </p>
 
     </div>
 
     <div class="flex shrink-0 flex-wrap items-center justify-end gap-1.5">
-      {
-        data.confidence === 'unconfirmed' && (
-          <span class="chip chip-flag" title="PDF failed to parse — tags are placeholders">
-            <Icon name="warn" size={11} /> needs re-tagging
-          </span>
-        )
-      }
       {
         data.url && (
           <a href={data.url} target="_blank" rel="noopener" class="chip">

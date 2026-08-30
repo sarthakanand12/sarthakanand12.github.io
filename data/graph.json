@@ -2599,32 +2599,11 @@
       "tool-use"
     ]
   },
-  "orphans": [
-    "decoding-strategies",
-    "distribution-drift",
-    "embedding-geometry",
-    "hybrid-retrieval",
-    "inference-time-scaling",
-    "multilingual-representation",
-    "peft-lora",
-    "recursive-architectures",
-    "reranking",
-    "response-ranking",
-    "reward-modeling",
-    "synthetic-data-generation",
-    "task-decomposition",
-    "transliteration"
-  ],
   "stats": {
     "papers": 80,
     "rawTags": 279,
     "concepts": 49,
     "edges": 147,
-    "edgesAtDefault": 39,
-    "unmappedTags": [],
-    "zeroConceptPapers": [
-      "dolphin-unconfirmed",
-      "fusion-functions-for-hybrid-retrieval-unconfirmed"
-    ]
+    "edgesAtDefault": 39
   }
 }

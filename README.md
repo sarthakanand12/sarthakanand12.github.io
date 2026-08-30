@@ -1,20 +1,13 @@
 # Research notebook
 
-Static Astro site. See `DEPLOYMENT.md` to publish it.
+Static Astro site — a portfolio built around a reading library: the papers, how the concepts connect, and which projects were grounded in which research.
+Deployed to GitHub Pages by [.github/workflows](.github/workflows) on push to `main`.
 
 ## Setup
 
 ```bash
 npm install
 npm run dev            # → localhost:4321
-```
-
-Python is only needed to rebuild the graph:
-
-```bash
-python -m venv .venv
-.venv/Scripts/python -m pip install -r requirements.txt        # Windows
-# source .venv/bin/activate && pip install -r requirements.txt  # macOS/Linux
 ```
 
 ## Commands
@@ -24,7 +17,7 @@ python -m venv .venv
 | `npm run dev` | Dev server on :4321 |
 | `npm run build` | Static build → `dist/` |
 | `npm run preview` | Serve `dist/` locally |
-| `npm run graph` | Rebuild `data/graph.json` |
+| `npm run check` | Type/content-schema check |
 
 ## Where things go
 
@@ -35,16 +28,43 @@ python -m venv .venv
 | Cover photo | `public/cover.jpg` |
 | Name, links, nav | `src/site.ts` |
 | Projects | `src/content/projects/*.md` — one file per project |
-| Courses | `src/content/courses/*.md` — one file per course |
-| Certificates | `src/content/certificates/*.md` — one file per certificate |
+| Papers | `src/content/papers.yaml` — one list, grouped by theme |
 | Blogs | `src/content/blogs/*.md` — one file per post |
-| Papers | `src/content/papers/*.md` — one file per paper |
-| Graph source | `data/papers_index.json` + `data/concept_map.yaml` → `npm run graph` |
+| Courses | `src/content/courses.yaml` — one list, render order = file order |
+| Certificates | `src/content/certificates.yaml` — one list, render order = file order |
+| Concept graph | `data/graph.json` — exported from the vault, not built here |
 
-Field names for each are in `src/content.config.ts`. A file missing a required
-field fails the build.
+Field names for each are in [src/content.config.ts](src/content.config.ts).
 
-### Frontmatter
+## Data flow
+
+The reading vault is upstream and owns everything about the papers — the folder structure, the tags, and the concept graph built from them. 
+This repo only displays that export, and adds the one relationship it owns: which project was grounded in which paper.
+
+```
+vault ──► src/content/papers.yaml   (title, theme, subtheme, tags, url, status)
+      ──► data/graph.json           (concept nodes, edges, paper → concepts)
+
+here  ──► src/content/projects/*.md  `papers: [slug]`  ← the backlink
+      ──► src/content/blogs/*.md     `papers: [slug]`  ← notes about a paper
+```
+
+A paper is metadata, not a page: there is no `papers/[slug]` route and no prose
+on a record. Notes about a paper go in a blog post naming its slug in `papers:`,
+which renders as a link in both directions — the post lists its papers, and the
+paper's panel lists the posts.
+
+[src/lib/data.ts](src/lib/data.ts) is the only place these are joined.
+
+Three vocabularies, deliberately separate:
+
+| Layer | Source | Used for |
+|---|---|---|
+| `tags` | `papers.yaml`, verbatim from the vault | search text only |
+| concepts | `graph.json`, keyed by paper slug | graph nodes, related papers, project → concept rollup |
+| `theme` / `subtheme` | `papers.yaml`, mirrors the vault's folders | facet rail, breadcrumbs |
+
+## Frontmatter
 
 Projects:
 
@@ -59,33 +79,9 @@ problem: 'What was broken.'
 approach: 'What you did.'
 result: 'What changed.'
 repo: https://github.com/you/repo   # or null
-papers: ['paper-slug']              # backlinks to src/content/papers/
----
-```
-
-Courses:
-
-```yaml
----
-title: 'Course name'
-issuer: 'NPTEL'
-year: 2024
-category: CSE               # Civil | CSE — drives the homepage filter
-url: null
-order: 1
----
-```
-
-Certificates:
-
-```yaml
----
-title: 'Certificate name'
-issuer: 'Google'
-year: 2025
-credentialId: 'ABC-123'     # or null
-url: null
-order: 1
+featured: false
+order: 100
+papers: ['paper-slug']              # paper ids from src/content/papers.yaml
 ---
 ```
 
@@ -102,10 +98,38 @@ papers: ['paper-slug']      # optional
 
 Body of the `.md` file is the post.
 
+Papers, courses and certificates are entries in their single YAML file. `id` is
+the permanent slug — project and blog backlinks reference it:
+
+```yaml
+- id: 'agentic-harness-engineering'
+  title: 'Agentic Harness Engineering'
+  theme: 'Agents & Orchestration'   # mirrors the vault's folders
+  subtheme: null
+  tags: ['agent harness design', 'coding agents']   # search facets only
+  url: 'https://arxiv.org/abs/...'  # or null
+  status: read                      # read | noted | skimmed
+  confidence: confirmed             # confirmed | unconfirmed
+```
+
+
+```yaml
+- id: 'engineering-mathematics-i'
+  title: 'Engineering Mathematics I'
+  category: CSE             # Civil | CSE — drives the homepage filter
+  grade: 'A-'               # or null when ungraded
+
+- id: 'tensorflow-developer-certificate'
+  title: 'TensorFlow Developer Certificate'
+  issuer: 'Google'
+  credentialId: 'TF-2025-84213'   # or null
+```
+
 ## Rules
 
-- `data/papers_index.json` and `data/concept_map.yaml` are hand-curated. Don't
-  edit them as a side effect of something else.
-- Paper slugs are permanent. Changing one breaks project backlinks.
-- A paper's concepts come from `concept_map.yaml`, never from its frontmatter.
+- `data/graph.json` is a vault export. Don't hand-edit it — regenerate it
+  upstream and copy it in.
+- Paper slugs are permanent. Changing one breaks project backlinks, and the build fails loudly if a slug drifts out of the graph.
+- A paper's concepts come from `graph.json`, never from `papers.yaml`.
+- Raw `tags` are search facets only. They are never graph nodes.
 - No server-side anything. GitHub Pages serves static files only.

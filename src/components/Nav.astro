@@ -6,8 +6,9 @@ const path = Astro.url.pathname;
 <header class="sticky top-0 z-40 border-b border-paper-300 bg-paper-100/92 backdrop-blur-sm">
   <div class="mx-auto flex h-14 max-w-[1760px] items-center gap-4 px-5 sm:px-8 lg:px-12">
     {/* Mark only. The name lives on the cover band now, so repeating it in the
-        nav was noise. */}
-    <a href="/" class="flex min-w-0 items-center" aria-label={site.name}>
+        nav was noise. Links off to the side project (chess, running, etc.),
+        not home — the nav items below cover home already. */}
+    <a href="/creative/" class="flex min-w-0 items-center" aria-label={`${site.name} — Creative`}>
       <span
         class="grid size-7 shrink-0 place-items-center rounded-[7px] border border-paper-400 bg-gradient-to-br from-clay-100 to-paper-200 font-mark text-[16px] text-clay-600 italic"
       >s</span>

@@ -1,0 +1,64 @@
+# Courses, rendered on the homepage as one italic separator-joined run.
+#
+# Render order IS file order — the list is emitted exactly as written here, so
+# reordering a course means moving its block. There is no `order` field to keep
+# in sync, and no sort in allCourses().
+- id: 'engineering-mathematics-i'
+  title: 'Engineering Mathematics I'
+  category: CSE
+  grade: 'A-'
+
+- id: 'engineering-mathematics-ii'
+  title: 'Engineering Mathematics II'
+  category: CSE
+  grade: 'A-'
+
+- id: 'computer-programming'
+  title: 'Computer Programming'
+  category: CSE
+  grade: 'A'
+
+- id: 'probability-and-statistics'
+  title: 'Probability and Statistics'
+  category: CSE
+  grade: 'A'
+
+- id: 'mathematical-methods'
+  title: 'Mathematical Methods'
+  category: CSE
+  grade: 'A'
+
+- id: 'discrete-mathematics'
+  title: 'Discrete Mathematics'
+  category: CSE
+  grade: 'A'
+
+- id: 'ubiquitous-computing'
+  title: 'Ubiquitous Computing'
+  category: CSE
+  grade: 'A*'
+
+- id: 'modelling-and-simulation'
+  title: 'Modelling and Simulation'
+  category: CSE
+  grade: 'A'
+
+- id: 'information-technology-workshop-i'
+  title: 'Information Technology Workshop I'
+  category: CSE
+  grade: 'A'
+
+- id: 'information-technology-workshop-ii'
+  title: 'Information Technology Workshop II'
+  category: CSE
+  grade: 'A-'
+
+- id: 'information-retrieval'
+  title: 'Information Retrieval'
+  category: CSE
+  grade: 'B'
+
+- id: 'artificial-intelligence'
+  title: 'Artificial Intelligence'
+  category: CSE
+  grade: 'B'

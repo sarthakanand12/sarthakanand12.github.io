@@ -21,7 +21,7 @@ const countBy = <T extends { data: { category: string } }>(items: T[]) => {
 const courseCategories = countBy(courses);
 
 // Enterprise = paid/client work. Everything else is self-directed.
-const ENTERPRISE_ORGS = new Set(['Convin', 'AICTE tender']);
+const ENTERPRISE_ORGS = new Set(['Convin', 'JSW One Platforms', 'IISc Bangalore']);
 const enterprise = projects.filter((p) => ENTERPRISE_ORGS.has(p.data.org));
 const personal = projects.filter((p) => !ENTERPRISE_ORGS.has(p.data.org));
 
@@ -95,7 +95,7 @@ const toc = [
             href={site.links.resume}
             class="flex h-[34px] items-center rounded-[8px] bg-clay-600 px-3.5 text-[12.5px] font-medium text-paper-50 shadow-[0_2px_10px_rgba(0,0,0,0.28)] transition-colors hover:bg-ink-900"
           >
-            Résumé (PDF)
+            Resume
           </a>
         </div>
       </div>
@@ -180,12 +180,11 @@ const toc = [
             <p class="course-run" data-filter-group="courses">
               {courses.map((c) => (
                 <span class="course-item" data-category={c.data.category}>
-                  {c.data.url ? (
-                    <a href={c.data.url} target="_blank" rel="noopener" class="hover:text-clay-600">
-                      {c.data.title}
-                    </a>
-                  ) : (
-                    c.data.title
+                  {c.data.title}
+                  {c.data.grade && (
+                    <span class="course-grade" aria-label={`grade ${c.data.grade}`}>
+                      {c.data.grade}
+                    </span>
                   )}
                 </span>
               ))}
@@ -200,8 +199,8 @@ const toc = [
             </>
           ) : (
             <p class="text-[13px] text-ink-400">
-              Add markdown files to <code class="font-mono">src/content/courses/</code> — they
-              render here as one italic, separator-joined run.
+              Add entries to <code class="font-mono">src/content/courses.yaml</code> — they render
+              here as one italic, separator-joined run, in the order written there.
             </p>
           )
         }
@@ -217,18 +216,7 @@ const toc = [
                 <li class="card flex items-baseline gap-3 px-4 py-3">
                   <div class="min-w-0 flex-1">
                     <p class="text-[13.5px] leading-snug font-medium text-ink-900">
-                      {c.data.url ? (
-                        <a
-                          href={c.data.url}
-                          target="_blank"
-                          rel="noopener"
-                          class="hover:text-clay-600"
-                        >
-                          {c.data.title}
-                        </a>
-                      ) : (
-                        c.data.title
-                      )}
+                      {c.data.title}
                     </p>
                     <p class="mt-0.5 text-[11.5px] text-ink-400">
                       {c.data.issuer}
@@ -240,13 +228,12 @@ const toc = [
                       )}
                     </p>
                   </div>
-                  <span class="tabular shrink-0 text-[11.5px] text-ink-400">{c.data.year}</span>
                 </li>
               ))}
             </ul>
           ) : (
             <p class="text-[13px] text-ink-400">
-              Add markdown files to <code class="font-mono">src/content/certificates/</code>.
+              Add entries to <code class="font-mono">src/content/certificates.yaml</code>.
             </p>
           )
         }

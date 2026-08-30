@@ -103,10 +103,6 @@ export default function Graph({
     () => nodes.filter((n) => linkedIds.has(n.id)),
     [nodes, linkedIds]
   );
-  const orphans = useMemo(
-    () => nodes.filter((n) => !linkedIds.has(n.id)),
-    [nodes, linkedIds]
-  );
 
   const maxCount = useMemo(() => Math.max(...nodes.map((n) => n.count), 1), [nodes]);
   const maxWeight = useMemo(() => Math.max(...edges.map((e) => e.weight), 1), [edges]);
@@ -238,29 +234,6 @@ export default function Graph({
           {matches && (
             <p class="tabular mt-1.5 text-[11px] text-ink-400">{matches.size} match(es)</p>
           )}
-        </div>
-
-        <div class="border-t border-paper-300 pt-4">
-          <p class="eyebrow flex items-center gap-1.5">Reading gaps</p>
-          <p class="mt-1.5 text-[11.5px] leading-relaxed text-ink-400">
-            {orphans.length} concept{orphans.length === 1 ? '' : 's'} with no edge in
-            the backbone — read one more paper joining any of these to something
-            else and it enters the graph.
-          </p>
-          <ul class="mt-2 flex flex-wrap gap-1">
-            {orphans.map((n) => (
-              <li key={n.id}>
-                <button
-                  type="button"
-                  onClick={() => setSelected(n.id)}
-                  class="chip chip-flag cursor-pointer"
-                >
-                  {n.label}
-                  <span class="tabular opacity-70">{n.count}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
         </div>
       </aside>
 

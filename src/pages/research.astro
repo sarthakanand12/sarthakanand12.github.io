@@ -26,8 +26,6 @@ const relatedBySlug = new Map(
   )
 );
 
-const unconfirmed = papers.filter((p) => p.data.confidence === 'unconfirmed');
-
 // Sort orders are prebuilt as index lists so the filter script only ever
 // reorders DOM nodes it already has — 80 rows, no framework needed.
 const statusOrder = ['noted', 'read', 'skimmed'] as const;
@@ -39,9 +37,6 @@ const statusOrder = ['noted', 'read', 'skimmed'] as const;
 >
   <header class="rise pt-10 pb-6">
     <h1 class="font-serif text-[2.2rem] font-medium">Research library</h1>
-    <p class="mt-2 font-serif text-[16px] text-ink-500 italic">
-      {papers.length} papers, tagged and linked back to what they were used to build.
-    </p>
   </header>
 
   {/* Toolbar */}
@@ -56,7 +51,7 @@ const statusOrder = ['noted', 'read', 'skimmed'] as const;
           id="search"
           type="search"
           autocomplete="off"
-          placeholder="search titles, tags, notes…"
+          placeholder="search titles and tags…"
           class="w-full rounded-[5px] border border-paper-300 bg-paper-50 py-1.5 pr-3 pl-8 text-[13px] text-ink-900 placeholder:text-ink-400 focus:border-clay-600 focus:outline-none"
         />
       </label>
@@ -133,22 +128,6 @@ const statusOrder = ['noted', 'read', 'skimmed'] as const;
         }
       </ul>
 
-      <p class="eyebrow mt-6 border-t border-paper-300 pt-4">Flags</p>
-      <ul class="mt-2.5 space-y-px">
-        <li>
-          <button
-            type="button"
-            class="facet flex w-full items-center gap-2 rounded-[4px] px-2 py-[5px] text-left text-[12.5px] text-ink-700 transition-colors hover:bg-paper-200"
-            data-facet="confidence"
-            data-value="unconfirmed"
-            aria-pressed="false"
-          >
-            <span class="flex-1">Needs re-tagging</span>
-            <span class="tabular shrink-0 text-[11.5px] text-ink-400">{unconfirmed.length}</span>
-          </button>
-        </li>
-      </ul>
-
     </aside>
 
     {/* ── List ───────────────────────────────────────────────────────── */}
@@ -200,16 +179,14 @@ const statusOrder = ['noted', 'read', 'skimmed'] as const;
     const clear = document.getElementById('clear');
     const facetBtns = Array.from(document.querySelectorAll('.facet'));
 
-    const active = { theme: new Set(), status: new Set(), confidence: new Set() };
+    const active = { theme: new Set(), status: new Set() };
 
-    const hay = (el) =>
-      (el.dataset.title || '') + ' ' + (el.dataset.tags || '') + ' ' + (el.dataset.note || '');
+    const hay = (el) => (el.dataset.title || '') + ' ' + (el.dataset.tags || '');
 
     function matches(el, q) {
       if (q && !hay(el).includes(q)) return false;
       if (active.theme.size && !active.theme.has(el.dataset.theme)) return false;
       if (active.status.size && !active.status.has(el.dataset.status)) return false;
-      if (active.confidence.size && !active.confidence.has(el.dataset.confidence)) return false;
       return true;
     }
 

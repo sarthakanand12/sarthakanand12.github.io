@@ -6,7 +6,7 @@ import { allProjects } from '../../lib/data';
 const projects = await allProjects();
 
 // Same split as the homepage — enterprise = paid/client work.
-const ENTERPRISE_ORGS = new Set(['Convin', 'AICTE tender']);
+const ENTERPRISE_ORGS = new Set(['Convin', 'JSW One Platforms', 'IISc Bangalore']);
 const enterprise = projects.filter((p) => ENTERPRISE_ORGS.has(p.data.org));
 const personal = projects.filter((p) => !ENTERPRISE_ORGS.has(p.data.org));
 ---

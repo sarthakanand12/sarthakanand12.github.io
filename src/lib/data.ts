@@ -1,6 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import graph from '../../data/graph.json';
-import index from '../../data/papers_index.json';
 
 /**
  * The join layer. Every page reads from here rather than touching collections
@@ -12,8 +11,6 @@ export type GraphNode = (typeof graph.nodes)[number];
 export type GraphEdge = (typeof graph.edges)[number];
 
 export const graphData = graph;
-export const dataQualityNotes: string[] = index.data_quality_notes ?? [];
-export const generatedOn: string = index.generated;
 
 const conceptById = new Map<string, GraphNode>(graph.nodes.map((n) => [n.id, n]));
 export const paperConcepts = graph.paperConcepts as Record<string, string[]>;
@@ -25,11 +22,13 @@ export function getConcept(id: string): GraphNode | undefined {
   return conceptById.get(id);
 }
 
-/** A paper, with its derived concepts attached. */
+/**
+ * A paper, with its derived concepts attached. No `entry`: papers are YAML
+ * records with no body, so there is nothing to render() — see content.config.ts.
+ */
 export interface Paper {
   slug: string;
   data: CollectionEntry<'papers'>['data'];
-  entry: CollectionEntry<'papers'>;
   concepts: string[];
 }
 
@@ -39,6 +38,12 @@ export interface Project {
   entry: CollectionEntry<'projects'>;
   /** Concepts reached through this project's papers, ranked by frequency. */
   concepts: string[];
+}
+
+export interface Blog {
+  slug: string;
+  data: CollectionEntry<'blogs'>['data'];
+  entry: CollectionEntry<'blogs'>;
 }
 
 let _papers: Paper[] | null = null;
@@ -51,7 +56,6 @@ export async function allPapers(): Promise<Paper[]> {
     .map((entry) => ({
       slug: entry.id,
       data: entry.data,
-      entry,
       concepts: paperConcepts[entry.id] ?? [],
     }))
     .sort((a, b) => a.data.title.localeCompare(b.data.title));
@@ -61,8 +65,8 @@ export async function allPapers(): Promise<Paper[]> {
   const unknown = _papers.filter((p) => !(p.slug in paperConcepts));
   if (unknown.length) {
     throw new Error(
-      'Papers absent from graph.json (slug drift — rerun `npm run graph` or ' +
-        'restore the slug): ' +
+      'Papers absent from graph.json (slug drift — re-export the graph from ' +
+        'the vault, or restore the slug): ' +
         unknown.map((p) => p.slug).join(', ')
     );
   }
@@ -83,7 +87,7 @@ export async function allProjects(): Promise<Project[]> {
         if (!paper) {
           throw new Error(
             `Project "${entry.id}" references unknown paper slug "${slug}". ` +
-              'Paper slugs are stable forever — check src/content/papers/.'
+              'Paper slugs are stable forever — check src/content/papers.yaml.'
           );
         }
         for (const c of paper.concepts) freq.set(c, (freq.get(c) ?? 0) + 1);
@@ -100,16 +104,6 @@ export async function allProjects(): Promise<Project[]> {
     .sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title));
 
   return _projects;
-}
-
-/**
- * Papers → projects, derived by inverting each project's `papers` list. The
- * paper's own `projects` frontmatter field stays available for hand-authored
- * links, and the two are unioned so either direction works.
- */
-export async function projectsForPaper(slug: string): Promise<Project[]> {
-  const projects = await allProjects();
-  return projects.filter((pr) => pr.data.papers.includes(slug));
 }
 
 export async function paperBacklinks(): Promise<Map<string, Project[]>> {
@@ -150,11 +144,6 @@ export async function relatedPapers(slug: string, limit = 5) {
     .slice(0, limit);
 }
 
-export async function papersForConcept(id: string): Promise<Paper[]> {
-  const papers = await allPapers();
-  return papers.filter((p) => p.concepts.includes(id));
-}
-
 /** Theme facet counts, ordered by count desc — drives the facet rail. */
 export async function themeCounts() {
   const papers = await allPapers();
@@ -172,31 +161,15 @@ export async function statusCounts() {
   return counts;
 }
 
-/** Concepts with no edge at the given threshold — the "reading gaps" panel. */
-export function orphanConcepts(minWeight = graph.defaultMinWeight): GraphNode[] {
-  const linked = new Set<string>();
-  for (const e of graph.edges) {
-    if (e.weight >= minWeight) {
-      linked.add(e.source);
-      linked.add(e.target);
-    }
-  }
-  return graph.nodes.filter((n) => !linked.has(n.id));
-}
-
-export function themeSlug(theme: string): string {
-  return theme
-    .toLowerCase()
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-}
-
 /**
  * Blog posts, newest first. Authoring is not wired up yet, so this is normally
  * empty — the join exists so a post lands on its papers the moment one is added.
+ *
+ * The explicit `Blog[]` matters: inferred, the near-empty collection narrows to
+ * `never` in blogs/[slug].astro's `Astro.props` and every `post.data` access
+ * fails to type-check.
  */
-export async function allBlogs() {
+export async function allBlogs(): Promise<Blog[]> {
   const entries = await getCollection('blogs', ({ data }) => !data.draft);
   return entries
     .map((entry) => ({ slug: entry.id, data: entry.data, entry }))
@@ -217,16 +190,21 @@ export async function blogsByPaper() {
   return map;
 }
 
+/**
+ * Deliberately unsorted: courses render in the order they are written in
+ * courses.yaml. Adding a sort here would silently override that file's order,
+ * which is the only thing controlling it.
+ */
 export async function allCourses() {
   const entries = await getCollection('courses', ({ data }) => !data.draft);
-  return entries
-    .map((entry) => ({ slug: entry.id, data: entry.data }))
-    .sort((a, b) => a.data.order - b.data.order || b.data.year - a.data.year);
+  return entries.map((entry) => ({ slug: entry.id, data: entry.data }));
 }
 
+/**
+ * Deliberately unsorted: certificates render in the order they are written in
+ * certificates.yaml, same as allCourses() above.
+ */
 export async function allCertificates() {
   const entries = await getCollection('certificates', ({ data }) => !data.draft);
-  return entries
-    .map((entry) => ({ slug: entry.id, data: entry.data }))
-    .sort((a, b) => a.data.order - b.data.order || b.data.year - a.data.year);
+  return entries.map((entry) => ({ slug: entry.id, data: entry.data }));
 }

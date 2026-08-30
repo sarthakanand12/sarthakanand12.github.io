@@ -1,2 +1,0 @@
-# Build-script dependencies. stdlib + PyYAML only (see CLAUDE.md).
-PyYAML==6.0.2

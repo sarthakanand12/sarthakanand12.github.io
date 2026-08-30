@@ -19,7 +19,7 @@ export const site = {
   links: {
     github: 'https://github.com/falconboi12',
     linkedin: 'https://www.linkedin.com/in/falconboi12',
-    email: 'mailto:sarthak.anand@convin.ai',
+    email: 'mailto:sarthak.anand12@gmail.com',
     resume: '/resume.pdf',
   },
 } as const;

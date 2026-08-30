@@ -1,0 +1,17 @@
+# Certificates, rendered on the homepage as a grid of cards.
+#
+# Render order IS file order — the list is emitted exactly as written here.
+- id: 'tensorflow-developer-certificate'
+  title: 'TensorFlow Developer Certificate'
+  issuer: 'Google'
+  credentialId: 'TF-2025-84213'
+
+- id: 'aws-certified-machine-learning-specialty'
+  title: 'AWS Certified Machine Learning — Specialty'
+  issuer: 'Amazon Web Services'
+  credentialId: 'AWS-ML-19402'
+
+- id: 'autocad-civil-3d-professional'
+  title: 'AutoCAD Civil 3D Professional'
+  issuer: 'Autodesk'
+  credentialId: 'ACAD-C3D-7712'
